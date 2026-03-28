@@ -1,0 +1,96 @@
+{
+  "title": "MetaFolio: Efficiency Frontier Subset Enumeration for Meta-Analysis Heterogeneity Decomposition",
+  "slug": "metafolio-efficiency-frontier",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-26",
+  "body": "Can subset enumeration identify which studies in a meta-analysis are most responsible for heterogeneity and instability in the pooled estimate? MetaFolio applies exhaustive or sampled subset enumeration to ten Cochrane reviews, computing the efficiency frontier of study subsets ranked by precision and consistency, identifying dominated studies whose removal reduces heterogeneity and narrows confidence intervals. The tool uses DerSimonian-Laird pooling on each candidate subset with coefficient-of-variation stability scoring and influence decomposition quantifying study contributions to heterogeneity. Across ten reviews, subset enumeration identified a median of two dominated studies per review whose exclusion reduced I-squared without meaningful change to the pooled point estimate. Leave-one-out influence decomposition corroborated the frontier-based identification, with dominated studies consistently showing the largest heterogeneity contributions. This approach provides a principled alternative to arbitrary outlier removal by grounding exclusion decisions in transparent efficiency trade-offs. However, the limitation of exponential computational scaling means reviews with more than fifteen studies require random sampling rather than exhaustive evaluation.",
+  "word_count": 156,
+  "sentence_count": 7,
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "Can subset enumeration identify which studies in a meta-analysis are most responsible for heterogeneity and instability in the pooled estimate?"
+    },
+    {
+      "role": "Dataset",
+      "text": "MetaFolio applies exhaustive or sampled subset enumeration to ten Cochrane reviews, computing the efficiency frontier of study subsets ranked by precision and consistency, identifying dominated studies whose removal reduces heterogeneity and narrows confidence intervals."
+    },
+    {
+      "role": "Method",
+      "text": "The tool uses DerSimonian-Laird pooling on each candidate subset with coefficient-of-variation stability scoring and influence decomposition quantifying study contributions to heterogeneity."
+    },
+    {
+      "role": "Primary result",
+      "text": "Across ten reviews, subset enumeration identified a median of two dominated studies per review whose exclusion reduced I-squared without meaningful change to the pooled point estimate."
+    },
+    {
+      "role": "Robustness",
+      "text": "Leave-one-out influence decomposition corroborated the frontier-based identification, with dominated studies consistently showing the largest heterogeneity contributions."
+    },
+    {
+      "role": "Interpretation",
+      "text": "This approach provides a principled alternative to arbitrary outlier removal by grounding exclusion decisions in transparent efficiency trade-offs."
+    },
+    {
+      "role": "Boundary",
+      "text": "However, the limitation of exponential computational scaling means reviews with more than fifteen studies require random sampling rather than exhaustive evaluation."
+    }
+  ],
+  "notes": {
+    "app": "MetaFolio v1.0",
+    "data": "10 Cochrane systematic reviews (exhaustive subset enumeration)",
+    "code": "https://github.com/mahmood726-cyber/metafolio",
+    "doi": "",
+    "version": "1.0",
+    "date": "2026-03-26",
+    "validation": "DRAFT"
+  },
+  "type": "methods",
+  "primary_estimand": "I-squared reduction from dominated study exclusion",
+  "validation": {
+    "status": "fail",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": false,
+        "detail": "Sentence 4 should include a confidence interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": true,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "schema": "e156-v0.2"
+}

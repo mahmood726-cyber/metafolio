@@ -1,0 +1,57 @@
+{
+  "title": "MetaFolio: Efficiency Frontier Subset Enumeration for Meta-Analysis Heterogeneity Decomposition",
+  "slug": "metafolio-efficiency-frontier",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-26",
+  "path": "C:\\MetaFolio",
+  "type": "methods",
+  "primary_estimand": "I-squared reduction from dominated study exclusion",
+  "summary": "Subset enumeration across 10 Cochrane reviews identifies dominated studies whose removal reduces heterogeneity without altering the pooled estimate.",
+  "body": "Can subset enumeration identify which studies in a meta-analysis are most responsible for heterogeneity and instability in the pooled estimate? MetaFolio applies exhaustive or sampled subset enumeration to ten Cochrane reviews, computing the efficiency frontier of study subsets ranked by precision and consistency, identifying dominated studies whose removal reduces heterogeneity and narrows confidence intervals. The tool uses DerSimonian-Laird pooling on each candidate subset with coefficient-of-variation stability scoring and influence decomposition quantifying study contributions to heterogeneity. Across ten reviews, subset enumeration identified a median of two dominated studies per review whose exclusion reduced I-squared without meaningful change to the pooled point estimate. Leave-one-out influence decomposition corroborated the frontier-based identification, with dominated studies consistently showing the largest heterogeneity contributions. This approach provides a principled alternative to arbitrary outlier removal by grounding exclusion decisions in transparent efficiency trade-offs. However, the limitation of exponential computational scaling means reviews with more than fifteen studies require random sampling rather than exhaustive evaluation.",
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "Can subset enumeration identify which studies in a meta-analysis are most responsible for heterogeneity and instability in the pooled estimate?"
+    },
+    {
+      "role": "Dataset",
+      "text": "MetaFolio applies exhaustive or sampled subset enumeration to ten Cochrane reviews, computing the efficiency frontier of study subsets ranked by precision and consistency, identifying dominated studies whose removal reduces heterogeneity and narrows confidence intervals."
+    },
+    {
+      "role": "Method",
+      "text": "The tool uses DerSimonian-Laird pooling on each candidate subset with coefficient-of-variation stability scoring and influence decomposition quantifying study contributions to heterogeneity."
+    },
+    {
+      "role": "Primary result",
+      "text": "Across ten reviews, subset enumeration identified a median of two dominated studies per review whose exclusion reduced I-squared without meaningful change to the pooled point estimate."
+    },
+    {
+      "role": "Robustness",
+      "text": "Leave-one-out influence decomposition corroborated the frontier-based identification, with dominated studies consistently showing the largest heterogeneity contributions."
+    },
+    {
+      "role": "Interpretation",
+      "text": "This approach provides a principled alternative to arbitrary outlier removal by grounding exclusion decisions in transparent efficiency trade-offs."
+    },
+    {
+      "role": "Boundary",
+      "text": "However, the limitation of exponential computational scaling means reviews with more than fifteen studies require random sampling rather than exhaustive evaluation."
+    }
+  ],
+  "notes": {
+    "app": "MetaFolio v1.0",
+    "data": "10 Cochrane systematic reviews (exhaustive subset enumeration)",
+    "code": "https://github.com/mahmood726-cyber/metafolio",
+    "doi": "",
+    "version": "1.0",
+    "date": "2026-03-26",
+    "validation": "DRAFT"
+  },
+  "affiliation": "Tahir Heart Institute",
+  "email": "mahmood.ahmad2@nhs.net",
+  "references": [
+    "Borenstein M, Hedges LV, Higgins JPT, Rothstein HR. Introduction to Meta-Analysis. 2nd ed. Wiley; 2021.",
+    "Higgins JPT, Thompson SG, Deeks JJ, Altman DG. Measuring inconsistency in meta-analyses. BMJ. 2003;327(7414):557-560.",
+    "Cochrane Handbook for Systematic Reviews of Interventions. Version 6.4. Cochrane; 2023."
+  ]
+}
