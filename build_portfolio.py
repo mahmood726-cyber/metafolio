@@ -11,8 +11,11 @@ import json
 import math
 import random
 import itertools
-import os
 from typing import List, Tuple, Dict, Any, Optional
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+DEFAULT_PROJECTS_ROOT = PROJECT_ROOT.parent
 
 # ─── DerSimonian-Laird meta-analysis ──────────────────────────────────────────
 
@@ -340,11 +343,21 @@ def process_review(review: Dict[str, Any], max_sample_non_frontier: int = 500) -
     }
 
 
-def main():
-    input_path = r"C:\FragilityAtlas\data\output\r_validation_inputs.json"
-    output_path = r"C:\MetaFolio\data\portfolios.json"
+def resolve_paths(project_root=None, projects_root=None):
+    project_root = Path(project_root).resolve() if project_root else PROJECT_ROOT
+    projects_root = Path(projects_root).resolve() if projects_root else project_root.parent
+    return {
+        "input": projects_root / "FragilityAtlas" / "data" / "output" / "r_validation_inputs.json",
+        "output": project_root / "data" / "portfolios.json",
+    }
 
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+def main(project_root=None, projects_root=None):
+    paths = resolve_paths(project_root=project_root, projects_root=projects_root)
+    input_path = paths["input"]
+    output_path = paths["output"]
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"Loading {input_path} ...")
     with open(input_path, "r", encoding="utf-8") as f:
@@ -392,7 +405,7 @@ def main():
     print(f"\nSaving portfolios to {output_path} ...")
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(portfolios, f, indent=2, allow_nan=False)
-    print(f"Saved. File size: {os.path.getsize(output_path) / 1024:.1f} KB\n")
+    print(f"Saved. File size: {output_path.stat().st_size / 1024:.1f} KB\n")
 
     # ── Print summary table ──
     print("=" * 120)
@@ -409,6 +422,7 @@ def main():
         )
     print("=" * 120)
     print("\nDone.")
+    return output_path
 
 
 if __name__ == "__main__":
