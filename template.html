@@ -1209,9 +1209,9 @@ function addStudyRow(name, yi, sei) {
   tr.id = 'studyRow_' + id;
   tr.innerHTML =
     '<td style="color:var(--text2);text-align:center" id="studyRowNum_' + id + '">' + rowCount + '</td>' +
-    '<td><input type="text" id="sname_' + id + '" value="' + escapeHtml(name || '') + '" placeholder="Study name"/></td>' +
-    '<td><input type="number" id="syi_' + id + '" value="' + (yi != null ? yi : '') + '" step="0.001" placeholder="e.g. 0.25"/></td>' +
-    '<td><input type="number" id="ssei_' + id + '" value="' + (sei != null ? sei : '') + '" step="0.001" placeholder="e.g. 0.12" min="0.0001"/></td>' +
+    '<td><input type="text" id="sname_' + id + '" value="' + escapeHtml(name || '') + '" placeholder="Study name" aria-label="Sname &#x27; + id + &#x27;" /></td>' +
+    '<td><input type="number" id="syi_' + id + '" value="' + (yi != null ? yi : '') + '" step="0.001" placeholder="e.g. 0.25" aria-label="Syi &#x27; + id + &#x27;" /></td>' +
+    '<td><input type="number" id="ssei_' + id + '" value="' + (sei != null ? sei : '') + '" step="0.001" placeholder="e.g. 0.12" min="0.0001" aria-label="Ssei &#x27; + id + &#x27;" /></td>' +
     '<td><button class="del-btn" onclick="deleteStudyRow(' + id + ')" title="Remove row" aria-label="Remove study">&times;</button></td>';
   tbody.appendChild(tr);
 }
