@@ -7,19 +7,19 @@ Input:  C:/FragilityAtlas/data/output/r_validation_inputs.json
 Output: C:/MetaFolio/data/portfolios.json
 """
 
+import itertools
 import json
 import math
 import random
-import itertools
-from typing import List, Tuple, Dict, Any, Optional
 from pathlib import Path
+from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_PROJECTS_ROOT = PROJECT_ROOT.parent
 
 # ─── DerSimonian-Laird meta-analysis ──────────────────────────────────────────
 
-def dl_meta(yi: List[float], sei: List[float]) -> Dict[str, float]:
+def dl_meta(yi: list[float], sei: list[float]) -> dict[str, float]:
     """
     Compute DerSimonian-Laird random-effects meta-analysis.
     Returns dict with: est, se, tau2, I2, precision.
@@ -88,7 +88,7 @@ def dl_meta(yi: List[float], sei: List[float]) -> Dict[str, float]:
 
 # ─── Subset enumeration ────────────────────────────────────────────────────────
 
-def enumerate_subsets_exhaustive(k: int) -> List[Tuple[int, ...]]:
+def enumerate_subsets_exhaustive(k: int) -> list[tuple[int, ...]]:
     """Return all non-empty subsets of indices 0..k-1 as tuples."""
     indices = list(range(k))
     subsets = []
@@ -98,7 +98,7 @@ def enumerate_subsets_exhaustive(k: int) -> List[Tuple[int, ...]]:
     return subsets
 
 
-def greedy_forward_path(yi: List[float], sei: List[float]) -> List[Tuple[int, ...]]:
+def greedy_forward_path(yi: list[float], sei: list[float]) -> list[tuple[int, ...]]:
     """
     Greedy forward selection: start with empty set, at each step add the study
     that most increases precision (lowest effective SE). Returns list of subsets
@@ -128,8 +128,8 @@ def greedy_forward_path(yi: List[float], sei: List[float]) -> List[Tuple[int, ..
 
 
 def enumerate_subsets_sampling(
-    yi: List[float], sei: List[float], n_random: int = 5000, seed: int = 42
-) -> List[Tuple[int, ...]]:
+    yi: list[float], sei: list[float], n_random: int = 5000, seed: int = 42
+) -> list[tuple[int, ...]]:
     """
     For large k (>15): greedy forward path + n_random random subsets.
     Uses xoshiro128**-style seeded RNG (via random.seed) for reproducibility.
@@ -163,7 +163,7 @@ def enumerate_subsets_sampling(
 
 # ─── Pareto frontier ──────────────────────────────────────────────────────────
 
-def pareto_frontier(results: List[Dict[str, Any]]) -> List[int]:
+def pareto_frontier(results: list[dict[str, Any]]) -> list[int]:
     """
     Identify Pareto-efficient subsets: maximize precision AND minimize tau2.
     A subset is on the frontier if no other subset has both >= precision AND <= tau2
@@ -197,7 +197,7 @@ def pareto_frontier(results: List[Dict[str, Any]]) -> List[int]:
 
 # ─── Per-study influence (leave-one-out) ──────────────────────────────────────
 
-def compute_influence(yi: List[float], sei: List[float]) -> List[Dict[str, Any]]:
+def compute_influence(yi: list[float], sei: list[float]) -> list[dict[str, Any]]:
     """
     Leave-one-out influence analysis.
     delta_se   = se_loo   - se_full    (positive => removing study worsens SE => study helps precision)
@@ -260,7 +260,7 @@ def compute_influence(yi: List[float], sei: List[float]) -> List[Dict[str, Any]]
 
 # ─── Main pipeline ─────────────────────────────────────────────────────────────
 
-def process_review(review: Dict[str, Any], max_sample_non_frontier: int = 500) -> Dict[str, Any]:
+def process_review(review: dict[str, Any], max_sample_non_frontier: int = 500) -> dict[str, Any]:
     """Process a single review: enumerate subsets, compute DL meta, find frontier."""
     review_id = review["review_id"]
     analysis_name = review["analysis_name"]
@@ -360,7 +360,7 @@ def main(project_root=None, projects_root=None):
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"Loading {input_path} ...")
-    with open(input_path, "r", encoding="utf-8") as f:
+    with open(input_path, encoding="utf-8") as f:
         reviews = json.load(f)
 
     print(f"Loaded {len(reviews)} reviews.\n")
