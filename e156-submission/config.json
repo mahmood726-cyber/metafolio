@@ -3,7 +3,7 @@
   "slug": "metafolio-efficiency-frontier",
   "author": "Mahmood Ahmad",
   "date": "2026-03-26",
-  "path": "C:\\MetaFolio",
+  "path": "..",
   "type": "methods",
   "primary_estimand": "I-squared reduction from dominated study exclusion",
   "summary": "Subset enumeration across 10 Cochrane reviews identifies dominated studies whose removal reduces heterogeneity without altering the pooled estimate.",

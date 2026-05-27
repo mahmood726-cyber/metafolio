@@ -3,8 +3,7 @@ build_portfolio.py — MetaFolio Task 1: Portfolio Enumeration Pipeline
 Loads per-study meta-analysis data, enumerates subsets, computes DL meta for each,
 identifies Pareto-efficient frontiers (precision vs tau2), and computes PHR influence metrics.
 
-Input:  C:/FragilityAtlas/data/output/r_validation_inputs.json
-Output: C:/MetaFolio/data/portfolios.json
+Uses repo-relative defaults for the FragilityAtlas input and local data output.
 """
 
 import itertools
